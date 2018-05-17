@@ -5,6 +5,7 @@ import java.io.Serializable;
 import magasin.Panier.ProduitAbsentPanierException;
 import magasin.Panier.QuantiteNulleException;
 import produits.Produit;
+import utilitaires.GestionnaireSauvegarde;
 
 public class Client implements Serializable{
 	
@@ -48,10 +49,12 @@ public class Client implements Serializable{
 		this.mail = mail;
 		this.genre = genre;
 		this.carnetCommandeClient=new CarnetCommande();
+		GestionnaireSauvegarde.marquer();
 	}
 
 	public final void setMotDePasse(String motDePasse) {
 			this.motDePasse = motDePasse;
+			GestionnaireSauvegarde.marquer();
 		}
 
 	public void connexion (String motDePasse) throws ErreurConnexionException {
@@ -130,8 +133,6 @@ public class Client implements Serializable{
 	}
 	
 	
-	
-
 	public final String getNom() {
 		return nom;
 	}
@@ -147,6 +148,8 @@ public class Client implements Serializable{
 	public final String getGenre() {
 		return genre;
 	}
+	
+	
 
 	@Override
 	public int hashCode() {

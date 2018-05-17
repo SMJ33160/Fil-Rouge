@@ -5,6 +5,7 @@ package utilitaires;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.io.ObjectInputStream;
 import java.io.Serializable;
 
 /**
@@ -31,13 +32,15 @@ public class Compteur implements Serializable, Sauvegardable{
 	 * on retourne le nombre incrémenter du compteur
 	 * @return instance.increment ()
 	 */
+	public static int newValue() {
+		return getInstance().increment();
+		}
 	
-	
-	public static int newValue () {		//
+	public static Compteur getInstance () {		//
 	if (instance == null) {
 	instance = new Compteur ();
 	}
-	return instance.increment ();
+	return instance;
 	}
 	
 	/**
@@ -46,18 +49,21 @@ public class Compteur implements Serializable, Sauvegardable{
 	 */
 	
 	private int increment() {
+	GestionnaireSauvegarde.marquer();
 	return suivant++;
 	}
 
 	@Override
-	public void enregistrer(ObjectOutputStream aEnregistrer) throws IOException {
+	public boolean enregistrer(ObjectOutputStream aEnregistrer) throws IOException {
 		// TODO Auto-generated method stub
-		
+		aEnregistrer.writeObject(instance);
+	return true;	
 	}
 
 	@Override
-	public void restituer(ObjectOutputStream aRestituer) throws IOException {
+	public boolean restituer(ObjectInputStream aRestituer) throws IOException, ClassNotFoundException {
 		// TODO Auto-generated method stub
-		
+		instance=(Compteur) aRestituer.readObject();
+		return true;	
 	}
 }

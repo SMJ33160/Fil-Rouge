@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.security.InvalidParameterException;
 
 import utilitaires.Compteur;
+import utilitaires.GestionnaireSauvegarde;
 
 /**
  * 
@@ -135,6 +136,7 @@ public abstract class Produit implements Serializable {
 		}
 		
 		this.prix = prix;
+		GestionnaireSauvegarde.marquer();
 	}
 
 	/**

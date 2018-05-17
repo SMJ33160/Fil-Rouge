@@ -2,6 +2,7 @@ package magasin;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.io.ObjectInputStream;
 import java.io.Serializable;
 
 import utilitaires.Sauvegardable;
@@ -41,15 +42,15 @@ public class CarnetCommandeMagasin implements Serializable, Sauvegardable {
 	}
 
 	@Override
-	public void enregistrer(ObjectOutputStream aEnregistrer) throws IOException {
-		// TODO Auto-generated method stub
-		
+	public boolean enregistrer(ObjectOutputStream aEnregistrer) throws IOException {
+		monCarnetDeCommande.enregistrer(aEnregistrer);
+	return true;	
 	}
 
 	@Override
-	public void restituer(ObjectOutputStream aRestituer) throws IOException {
-		// TODO Auto-generated method stub
-		
+	public boolean restituer(ObjectInputStream aRestituer) throws IOException, ClassNotFoundException {
+		monCarnetDeCommande.restituer(aRestituer);
+	return true;	
 	}
 	
 	

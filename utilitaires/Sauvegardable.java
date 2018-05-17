@@ -13,13 +13,14 @@ public interface Sauvegardable {
 	 * @throws IOException
 	 */
 	
-	public void enregistrer(ObjectOutputStream aEnregistrer) throws IOException;
+	public boolean enregistrer(ObjectOutputStream aEnregistrer) throws IOException;
 	
 	/**
 	 * 
 	 * @param aRestituer
 	 * @throws IOException
+	 * @throws ClassNotFoundException 
 	 */
-	public void restituer(ObjectOutputStream aRestituer) throws IOException;
+	public boolean restituer(ObjectInputStream aRestituer) throws IOException, ClassNotFoundException;
 
 }

@@ -1,0 +1,17 @@
+/CarnetClientele.class
+/CarnetCommande.class
+/CarnetCommandeMagasin.class
+/Catalogue$ErreurAjoutProduitException.class
+/Catalogue$ErreurSuppressionProduitException.class
+/Catalogue.class
+/Client$ErreurConnexionException.class
+/Client.class
+/Commande$CommandeVerrouilleException.class
+/Commande$ProduitExistantException.class
+/Commande.class
+/LigneCommande.class
+/LignePanier.class
+/Panier$ProduitAbsentPanierException.class
+/Panier$QuantiteNulleException.class
+/Panier.class
+/package-info.class

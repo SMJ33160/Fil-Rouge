@@ -2,6 +2,7 @@ package magasin;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.io.ObjectInputStream;
 import java.io.Serializable;
 import java.util.HashSet;
 
@@ -97,15 +98,16 @@ public class Catalogue implements Serializable, Sauvegardable{
 	}
 
 	@Override
-	public void enregistrer(ObjectOutputStream aEnregistrer) throws IOException {
-		// TODO Auto-generated method stub
-		
+	public boolean enregistrer(ObjectOutputStream aEnregistrer) throws IOException {
+		aEnregistrer.writeObject(contenu);
+	return true;	
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public void restituer(ObjectOutputStream aRestituer) throws IOException {
-		// TODO Auto-generated method stub
-		
+	public boolean restituer(ObjectInputStream aRestituer) throws IOException, ClassNotFoundException {
+		contenu=(HashSet<Produit>) aRestituer.readObject();
+	return true;	
 	}
 
 }

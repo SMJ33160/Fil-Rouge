@@ -5,6 +5,8 @@ package produits;
 
 import java.util.HashMap;
 
+import utilitaires.GestionnaireSauvegarde;
+
 /**
  * @author jeanm_000
  *
@@ -60,6 +62,7 @@ public class Lot extends Produit {
 		}
 		
 		contenu.put(produit, quantite);
+		GestionnaireSauvegarde.marquer();
 	}
 
 

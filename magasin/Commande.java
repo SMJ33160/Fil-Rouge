@@ -6,6 +6,7 @@ import java.util.LinkedHashMap;
 
 import produits.Produit;
 import utilitaires.Compteur;
+import utilitaires.GestionnaireSauvegarde;
 
 public class Commande implements Serializable{
 	
@@ -65,6 +66,7 @@ public class ProduitExistantException extends Exception {
 
 public void verrouiller() {
 	this.valide=true;
+	GestionnaireSauvegarde.marquer();
 }
 
 public void deverrouiller() {
