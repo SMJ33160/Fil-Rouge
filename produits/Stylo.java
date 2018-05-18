@@ -47,6 +47,13 @@ public class Stylo extends Produit {
 	public final TypeStylo getTypeStylo() {
 		return typeStylo;
 	}
+
+	@Override
+	public String toString() {
+		return "Stylo : reference= " + reference + " marque= " + marque + " typeStylo=" + typeStylo + " couleur=" + couleur + " intitule= " + intitule
+				+ " description= " + description + " type= " + type + " prix= "
+				+ prix ;
+	}
 	
 	
 

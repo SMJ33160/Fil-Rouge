@@ -5,6 +5,7 @@ import java.io.ObjectOutputStream;
 import java.io.ObjectInputStream;
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.Iterator;
 
 import produits.Produit;
 import utilitaires.Sauvegardable;
@@ -109,5 +110,23 @@ public class Catalogue implements Serializable, Sauvegardable{
 		contenu=(HashSet<Produit>) aRestituer.readObject();
 	return true;	
 	}
+
+	@Override
+	public String toString() {
+		
+		String retour;
+		
+		retour="Votre catalogue :\n";
+		Iterator<Produit> monContenu =contenu.iterator();
+		
+		while (monContenu.hasNext()) {
+			Produit monProduit = monContenu.next();
+			retour+=monProduit.toString()+"\n";
+		}
+				
+		return retour;
+	}
+	
+	
 
 }

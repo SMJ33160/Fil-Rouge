@@ -28,12 +28,12 @@ public abstract class Produit implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private final String reference;
-	private final String marque;
-	private final String intitule;
-	private final String description;
-	private final TypeProduit type;
-	private double prix;
+	protected final String reference;
+	protected final String marque;
+	protected final String intitule;
+	protected final String description;
+	protected final TypeProduit type;
+	protected double prix;
 	
 	
 	/**

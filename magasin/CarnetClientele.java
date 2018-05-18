@@ -26,6 +26,7 @@ public class CarnetClientele implements Serializable,Sauvegardable{
 	// Constructeur
 	
 	private CarnetClientele (){
+		mesClients=new HashSet<Client>();
 	}
 
 	// Méthodes spécifiques
@@ -74,5 +75,22 @@ public class CarnetClientele implements Serializable,Sauvegardable{
 	return true;	
 	}
 
+	@Override
+	public String toString() {
+		String retour;
+		
+		retour="Votre Carnet Clientele :\n";
+		Iterator<Client> client =mesClients.iterator();
+		
+		while (client.hasNext()) {
+			Client monClient = client.next();
+			retour+=monClient.getGenre()+" "+monClient.getNom()+" "+monClient.getPrenom()+" "+monClient.getMail()+"\n";
+		}
+				
+		return retour;
+	}
+
 	// Hash code et toString
+	
+	
 }

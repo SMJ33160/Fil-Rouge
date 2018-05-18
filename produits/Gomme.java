@@ -25,4 +25,12 @@ public class Gomme extends Produit {
 		
 	}
 
+	@Override
+	public String toString() {
+		return "Gomme: reference= " + reference + " marque= " + marque + " intitule= " + intitule + " description= "
+				+ description + " type= " + type + " prix= " + prix;
+	}
+	
+	
+
 }

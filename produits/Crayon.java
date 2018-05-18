@@ -47,8 +47,11 @@ public class Crayon extends Produit {
 	public final DureteCrayon getDurete() {
 		return durete;
 	}
-	
-	
-	
+
+	@Override
+	public String toString() {
+		return "Crayon : reference=" + reference + " marque= " + marque +" durete=" + durete + " intitule=" + intitule
+				+ " description= " + description + " type= " + type + " prix= " + prix;
+	}
 
 }

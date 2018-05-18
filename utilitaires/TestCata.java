@@ -1,6 +1,7 @@
 package utilitaires;
 
 import magasin.*;
+import magasin.Catalogue.ErreurAjoutProduitException;
 import magasin.Client.ErreurConnexionException;
 import magasin.Panier.ProduitAbsentPanierException;
 import magasin.Panier.QuantiteNulleException;
@@ -8,11 +9,50 @@ import produits.*;
 import produits.Crayon.DureteCrayon;
 import produits.Stylo.TypeStylo;
 
+/** Programme de test du fil rouge
+ * 
+ * @author Jm 
+ *
+ */
+
 public class TestCata {
 
-	public static void main(String[] args) throws ProduitAbsentPanierException,QuantiteNulleException {
+	public static void main(String[] args) throws ProduitAbsentPanierException,QuantiteNulleException, ErreurAjoutProduitException {
 		
-		Client monClient =new Client("Mr","Dupont","Jean","Jean.Dupont@toto.fr");
+		
+		/** Création d'un Carnet Client
+		 * 
+		 */
+		
+		CarnetClientele monCarnetClient = CarnetClientele.GetInstance();
+		
+		for (int i=0; i<5;i++){
+		
+		Client monClient =new Client("Mr","Dupont"+i,"Jean","Jean.Dupont"+i+"@toto.fr");
+		monClient.setMotDePasse("toto");
+		monCarnetClient.AjoutClient(monClient);
+		}
+				
+		System.out.print(monCarnetClient.toString());
+		
+		/** Création de produit et du catalogue
+		 * 
+		 */
+		Produit maGomme = new Gomme ("Cordier","Gomme crayon","Une Super Gomme",5.2);
+		Produit monStylo = new Stylo ("Cordier", "Mon Stylo", "un super stylo", 1.2, "Rouge", TypeStylo.PLUME);
+		Produit monCrayon= new Crayon ("Cordier","Mon Crayon","un Super Crayon",2.3,DureteCrayon._HB);
+		
+		Catalogue monCatalogue=Catalogue.getInstance();
+		
+		
+		monCatalogue.ajouter(maGomme);
+		monCatalogue.ajouter(monStylo);
+		monCatalogue.ajouter (monCrayon);
+		
+		System.out.print(monCatalogue.toString());
+		
+		
+		/**
 		
 		monClient.setMotDePasse("toto");
 		try {
@@ -23,12 +63,10 @@ public class TestCata {
 		}
 		
 		Commande maCommande;
-	//	Panier monPanier;
+		Panier monPanier;
 		 
-		Produit maGomme = new Gomme ("Cordier","Gomme crayon","Une Super Gomme",5.2);
-		Produit monStylo = new Stylo ("Cordier", "Mon Stylo", "un super stylo", 1.2, "Rouge", TypeStylo.PLUME);
-		Produit monCrayon= new Crayon ("Cordier","Mon Crayon","un Super Crayon",2.3,DureteCrayon._HB);
-		//monPanier=new Panier();
+		
+		monPanier=new Panier();
 		
 		
 		monClient.ajouterProduit(maGomme, 15);
@@ -79,7 +117,7 @@ public class TestCata {
 		System.out.print(maCommande.toString());
 		
 		
-		
+		**/
 	
 	}
 

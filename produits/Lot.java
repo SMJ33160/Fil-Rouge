@@ -80,6 +80,13 @@ public class Lot extends Produit {
 		super.deverrouiller();
 		this.verrouille=false;
 	}
+
+	@Override
+	public String toString() {
+		return "Lot: reference=" + reference + " verrouille= " + verrouille + " contenu= " + contenu + " marque= "
+				+ marque + " intitule= " + intitule + " description= " + description + " type= " + type + " prix= "
+				+ prix ;
+	}
 	
 
 }

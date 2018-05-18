@@ -91,4 +91,16 @@ public class Cahier extends Produit {
 		return carroyage;
 	}
 
+	@Override
+	public String toString() {
+		return "Cahier: reference=" + reference + " couleur= " + couleur + " nbPage= " + nbPage + " couture= " + couture + " grammage= " + grammage
+				+ " dimension= " + dimension + " carroyage= " + carroyage + " marque= "
+				+ marque + " intitule= " + intitule + " description= " + description + " type= " + type + " prix= "
+				+ prix;
+	}
+
+	
+	
+	
+
 }
