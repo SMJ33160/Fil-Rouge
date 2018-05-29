@@ -62,7 +62,7 @@ public class Lot extends Produit {
 		}
 		
 		contenu.put(produit, quantite);
-		GestionnaireSauvegarde.getInstance().marquer();
+		GestionnaireSauvegarde.marquer();
 	}
 
 

@@ -113,6 +113,7 @@ public class Catalogue implements Serializable, Sauvegardable{
 
 	@Override
 	public String toString() {
+		
 		String retour;
 		
 		retour="Votre catalogue :\n";
@@ -122,7 +123,7 @@ public class Catalogue implements Serializable, Sauvegardable{
 			Produit monProduit = monContenu.next();
 			retour+=monProduit.toString()+"\n";
 		}
-		
+				
 		return retour;
 	}
 	

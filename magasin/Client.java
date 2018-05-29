@@ -49,12 +49,12 @@ public class Client implements Serializable{
 		this.mail = mail;
 		this.genre = genre;
 		this.carnetCommandeClient=new CarnetCommande();
-		GestionnaireSauvegarde.getInstance().marquer();
+		GestionnaireSauvegarde.marquer();
 	}
 
 	public final void setMotDePasse(String motDePasse) {
 			this.motDePasse = motDePasse;
-			GestionnaireSauvegarde.getInstance().marquer();
+			GestionnaireSauvegarde.marquer();
 		}
 
 	public void connexion (String motDePasse) throws ErreurConnexionException {

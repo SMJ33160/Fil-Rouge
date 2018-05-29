@@ -36,7 +36,7 @@ public class Cahier extends Produit {
 	 * @param prix
 	 * @param complement
 	 */
-	public Cahier(String marque, String intitule, String description, double prix, String couleur,
+	public Cahier(String marque, String intitule, String description, TypeProduit type, double prix, String couleur,
 			int nbPage, Couture couture, int grammage, String dimension, Carroyage carroyage) {
 		super(marque, intitule, description, TypeProduit.CAHIER, prix, carroyage, couture, couleur, nbPage, grammage,
 				dimension);

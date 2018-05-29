@@ -136,7 +136,7 @@ public abstract class Produit implements Serializable {
 		}
 		
 		this.prix = prix;
-		GestionnaireSauvegarde.getInstance().marquer();
+		GestionnaireSauvegarde.marquer();
 	}
 
 	/**
