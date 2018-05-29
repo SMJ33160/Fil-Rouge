@@ -49,7 +49,7 @@ public class Compteur implements Serializable, Sauvegardable{
 	 */
 	
 	private int increment() {
-	GestionnaireSauvegarde.marquer();
+		GestionnaireSauvegarde.getInstance().marquer();
 	return suivant++;
 	}
 

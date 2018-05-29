@@ -66,7 +66,7 @@ public class ProduitExistantException extends Exception {
 
 public void verrouiller() {
 	this.valide=true;
-	GestionnaireSauvegarde.marquer();
+	GestionnaireSauvegarde.getInstance().marquer();
 }
 
 public void deverrouiller() {

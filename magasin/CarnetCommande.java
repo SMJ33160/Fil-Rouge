@@ -31,7 +31,7 @@ public class CarnetCommande implements Serializable, Sauvegardable{
 	
 	public void ajoutCommande (Commande maCommande){
 		monCarnetCommande.put(Compteur.newValue(), maCommande);
-		GestionnaireSauvegarde.marquer();
+		GestionnaireSauvegarde.getInstance().marquer();
 	}
 	
 	public Commande commandeParNumero (int numCommande){

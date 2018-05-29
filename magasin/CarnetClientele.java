@@ -53,7 +53,7 @@ public class CarnetClientele implements Serializable,Sauvegardable{
 
 	// Getter Setter
 	
-	public static CarnetClientele GetInstance(){
+	public static CarnetClientele getInstance(){
 		if (monCarnet == null) {
 			monCarnet = new CarnetClientele();
 		}

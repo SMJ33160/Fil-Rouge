@@ -25,6 +25,8 @@ public class GestionnaireSauvegarde {
 	 */
 	private LinkedList<Class<? extends Sauvegardable>> aSauver;
 	
+	private static GestionnaireSauvegarde instance=null;
+	
 	static boolean modifie;
 	
 	private GestionnaireSauvegarde(){
@@ -41,11 +43,18 @@ public class GestionnaireSauvegarde {
 		
 	}
 	
-	public static void marquer(){
+	public static GestionnaireSauvegarde getInstance() {
+		if (instance == null) {
+			instance = new GestionnaireSauvegarde();
+		}
+		return instance;
+	}
+	
+	public void marquer(){
 		modifie=true;
 	}
 	 
-	public static boolean isModifie() {
+	public boolean isModifie() {
 		return modifie;
 	}
 
