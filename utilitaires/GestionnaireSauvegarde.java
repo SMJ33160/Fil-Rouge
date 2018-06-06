@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -85,25 +86,21 @@ public class GestionnaireSauvegarde {
 	return (Sauvegardable) clazz.getMethod("getInstance").invoke(null);
 	}
 	
+	@SuppressWarnings("unused")
 	public void sauver (File fichier) throws IOException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
 		
 		FileOutputStream fos = null;
 		BufferedOutputStream bos = null;
 		ObjectOutputStream oos = null;
-		try {
+		
 		fos = new FileOutputStream(fichier);
 		bos = new BufferedOutputStream(fos);
 		oos = new ObjectOutputStream(bos);
 		for (Class<? extends Sauvegardable> clazz : aSauver) {
 			getInstance(clazz).enregistrer(oos) ;
 			}
-		} 
-		catch (IOException e) {
-		e.printStackTrace();
-		} 
 		
-		finally {
-			try {
+		try {
 				if (oos != null) oos.close();
 				else if (bos != null) bos.close();
 				else if (fos != null)fos.close();
@@ -113,7 +110,7 @@ public class GestionnaireSauvegarde {
 			}
 		modifie=false;
 		
-		}
+		
 
 	}
 	
@@ -124,37 +121,31 @@ public class GestionnaireSauvegarde {
 		
 	}
 	
-public void restituer (File fichier) throws IOException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, ClassNotFoundException {
+@SuppressWarnings("unused")
+public void restituer (File file) throws FileNotFoundException, IOException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, ClassNotFoundException {
 		
 		FileInputStream fos = null;
 		BufferedInputStream bos = null;
 		ObjectInputStream oos = null;
-		try {
-		fos = new FileInputStream(fichier);
+		fos = new FileInputStream(file);
 		bos = new BufferedInputStream(fos);
 		oos = new ObjectInputStream(bos);
 		for (Class<? extends Sauvegardable> clazz : aSauver) {
 			getInstance(clazz).restituer(oos) ;
 			}
-		} 
-		catch (IOException e) {
-		e.printStackTrace();
-		} 
-		
-		finally {
-			try {
+		try {
 				if (oos != null) oos.close();
 				else if (bos != null) bos.close();
 				else if (fos != null)fos.close();
 			} 
-			catch (IOException e) {
+		catch (IOException e) {
 			e.printStackTrace();
 			}
 		modifie=false;
 		
 		}
 
-	}
+	
 	
 	public void restituer (String cheminAccesFichier) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, IOException, ClassNotFoundException{
 		

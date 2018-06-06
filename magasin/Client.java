@@ -149,7 +149,9 @@ public class Client implements Serializable{
 		return genre;
 	}
 	
-	
+	public final Boolean getConnected() {
+		return connected;
+	}
 
 	@Override
 	public int hashCode() {

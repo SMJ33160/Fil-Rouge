@@ -31,10 +31,13 @@ public class CarnetClientele implements Serializable,Sauvegardable{
 
 	// Méthodes spécifiques
 	
-	public void AjoutClient (Client client){
-		if (!mesClients.contains(client)){
-			mesClients.add(client);
+	public void AjoutClient (Client client) throws ClientExistantDansCarnet {
+		if (mesClients.contains(this.TrouveParMail(client.getMail()))) 
+		{
+			throw new ClientExistantDansCarnet();
 		}
+		
+		mesClients.add(client);
 	}
 	
 	public Client TrouveParMail (String mail){
@@ -50,6 +53,11 @@ public class CarnetClientele implements Serializable,Sauvegardable{
 	}
 
 	// Exception
+	
+	public class ClientExistantDansCarnet extends Exception {
+
+		private static final long serialVersionUID = 1L;
+	}
 
 	// Getter Setter
 	
