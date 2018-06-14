@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionListener;
 
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -26,6 +27,7 @@ public class ProduitCommunJPane extends JPanel {
 	private JTextArea description;
 	private JComboBox<TypeProduit>  TypeProduitJC = new JComboBox<TypeProduit>(TypeProduit.values());
 	
+	// Contructeur de Classe qui bati le formulaire de base
 	public ProduitCommunJPane() {
 		
 		super();
@@ -35,7 +37,7 @@ public class ProduitCommunJPane extends JPanel {
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints gbc = new GridBagConstraints();
 		
-		gbc.fill = GridBagConstraints.HORIZONTAL;
+		 gbc.fill = GridBagConstraints.HORIZONTAL;
 		 gbc.gridwidth =2;
 		 gbc.insets = new Insets(5,5,5,5);
 		 gbc.gridy = 0;
@@ -43,14 +45,14 @@ public class ProduitCommunJPane extends JPanel {
 		 add(new TitrePane("Ajout Produit"), gbc);
 		 
 		 gbc.gridwidth = 1;
-		 gbc.fill = GridBagConstraints.BOTH;
+		 gbc.fill = GridBagConstraints.HORIZONTAL;
 		 gbc.insets = new Insets(5,5,5,5);
 		 gbc.gridy = 2;
 		 gbc.gridx = 0;
 		 add(new JLabel("Marque : ",JLabel.LEFT), gbc);
 		 
 		 gbc.gridwidth = 1;
-		 gbc.fill = GridBagConstraints.BOTH;
+		 gbc.fill = GridBagConstraints.HORIZONTAL;
 		 gbc.insets = new Insets(5,5,5,5);
 		 gbc.gridy = 2;
 		 gbc.gridx = 1;
@@ -58,14 +60,14 @@ public class ProduitCommunJPane extends JPanel {
 		 add(marque, gbc);
 		 
 		 gbc.gridwidth = 1;
-		 gbc.fill = GridBagConstraints.BOTH;
+		 gbc.fill = GridBagConstraints.HORIZONTAL;
 		 gbc.insets = new Insets(5,5,5,5);
 		 gbc.gridy = 3;
 		 gbc.gridx = 0;
 		 add(new JLabel("Prix : ",JLabel.LEFT), gbc);
 		
 		 gbc.gridwidth = 1;
-		 gbc.fill = GridBagConstraints.BOTH;
+		 gbc.fill = GridBagConstraints.HORIZONTAL;
 		 gbc.insets = new Insets(5,5,5,5);
 		 gbc.gridy = 3;
 		 gbc.gridx = 1;
@@ -73,14 +75,14 @@ public class ProduitCommunJPane extends JPanel {
 		 add(prix, gbc);
 		 
 		 gbc.gridwidth = 1;
-		 gbc.fill = GridBagConstraints.BOTH;
+		 gbc.fill = GridBagConstraints.HORIZONTAL;
 		 gbc.insets = new Insets(5,5,5,5);
 		 gbc.gridy = 4;
 		 gbc.gridx = 0;
 		 add(new JLabel("Intitulé : ",JLabel.LEFT), gbc);
 		
 		 gbc.gridwidth = 1;
-		 gbc.fill = GridBagConstraints.BOTH;
+		 gbc.fill = GridBagConstraints.HORIZONTAL;
 		 gbc.insets = new Insets(5,5,5,5);
 		 gbc.gridy = 4;
 		 gbc.gridx = 1;
@@ -88,14 +90,14 @@ public class ProduitCommunJPane extends JPanel {
 		 add(intitule, gbc);
 		 
 		 gbc.gridwidth = 1;
-		 gbc.fill = GridBagConstraints.BOTH;
+		 gbc.fill = GridBagConstraints.HORIZONTAL;
 		 gbc.insets = new Insets(5,5,5,5);
 		 gbc.gridy = 5;
 		 gbc.gridx = 0;
 		 add(new JLabel("Description : ",JLabel.LEFT), gbc);
 		
 		 gbc.gridwidth = 1;
-		 gbc.fill = GridBagConstraints.BOTH;
+		 gbc.fill = GridBagConstraints.HORIZONTAL;
 		 gbc.insets = new Insets(5,5,5,5);
 		 gbc.gridy = 5;
 		 gbc.gridx = 1;
@@ -103,14 +105,14 @@ public class ProduitCommunJPane extends JPanel {
 		 add(new JScrollPane(description) , gbc);
 		 
 		 gbc.gridwidth = 1;
-		 gbc.fill = GridBagConstraints.BOTH;
+		 gbc.fill = GridBagConstraints.HORIZONTAL;
 		 gbc.insets = new Insets(5,5,5,5);
 		 gbc.gridy = 6;
 		 gbc.gridx = 0;
 		 add(new JLabel("Type de produit : ",JLabel.LEFT), gbc);
 		
 		 gbc.gridwidth = 1;
-		 gbc.fill = GridBagConstraints.BOTH;
+		 gbc.fill = GridBagConstraints.HORIZONTAL;
 		 gbc.insets = new Insets(5,5,5,5);
 		 gbc.gridy = 6;
 		 gbc.gridx = 1;
@@ -118,47 +120,21 @@ public class ProduitCommunJPane extends JPanel {
 		 
 	
 	}
-
-	public JTextField getMarque() {
-		return marque;
-	}
-
-	public void setMarque(JTextField marque) {
-		this.marque = marque;
-	}
-
-	public JTextField getPrix() {
-		return prix;
-	}
-
-	public void setPrix(JTextField prix) {
-		this.prix = prix;
-	}
-
-	public JTextField getIntitule() {
-		return intitule;
-	}
-
-	public void setIntitule(JTextField intitule) {
-		this.intitule = intitule;
-	}
-
-	public JTextArea getDescription() {
-		return description;
-	}
-
-	public void setDescription(JTextArea description) {
-		this.description = description;
-	}
-
-	public JComboBox<TypeProduit> getTypeProduitJC() {
-		return TypeProduitJC;
-	}
-
-	public void setTypeProduitJC(JComboBox<TypeProduit> typeProduitJC) {
-		TypeProduitJC = typeProduitJC;
+	
+	// méthode permettant d'enregistrer le formulaire comme observateur de la liste déroulante.
+	public void addTypeProduitChangeListener(ActionListener listener) {
+	
+		// une simple délégation vers la JComboBox  
+		
+		TypeProduitJC.addActionListener(listener);
 	}
 	
+	// méthode qui permet de récupérer le type de produit sélectionné par l'utilisateur
+	public TypeProduit getSelectedTypeProduit() {
 	
-
+		// de Nouveau une simple délégation avec un casting de type Notez getSelectedItem qui retourne l'objet correspondant au choix de l'utilisateur
+		
+		return (TypeProduit) TypeProduitJC.getSelectedItem();
+	}
+	
 }

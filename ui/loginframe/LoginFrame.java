@@ -3,22 +3,37 @@ package ui.loginframe;
 import java.awt.HeadlessException;
 import javax.swing.JFrame;
 
-import ui.produit.CahierJP;
-import ui.produit.CrayonJP;
-import ui.produit.GommeJP;
-import ui.produit.ProduitCommunJPane;
-public class LoginFrame extends JFrame {
- private static final long serialVersionUID = 1L;
+import ui.client.UtilisateurBodyPane;
+import ui.commun.EcouteurFermeture;
 
-	 public LoginFrame() throws HeadlessException {
-	 super("Identification");
-	 setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+public class LoginFrame extends JFrame {
+	
+ private static final long serialVersionUID = 1L;
+ 
+ // private LoginPanel loginPanel;
+ 
+ private LoginPanel loginPanel;
+ 
+  public LoginFrame() throws HeadlessException {
+	
+		 super("Identification");
+	
+		 this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		 
+		 this.addWindowListener(new EcouteurFermeture());	
 	 
-	 // on change le panneau contenu
-	 setContentPane(new CahierJP(new ProduitCommunJPane()));
-	 //setContentPane(new LoginPanel());
+		 // on change le panneau contenu
+		loginPanel=new LoginPanel(); 
+		setContentPane(loginPanel);
+	
 	 
 	 pack ();
 	 setLocationRelativeTo(null);
 	 }
+
+	public LoginPanel getLoginPanel() {
+		return loginPanel;
+	}
+
 }

@@ -6,7 +6,7 @@ public class GommeJP extends AbstractOptionJPane {
 
 	public GommeJP(ProduitCommunJPane communJP) {
 		super(communJP);
-		
+					
 	}
 
 }

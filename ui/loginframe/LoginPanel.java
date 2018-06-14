@@ -9,12 +9,17 @@ import java.awt.Insets;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 
+import javax.swing.AbstractAction;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import magasin.CarnetClientele;
+import magasin.Client;
+import magasin.Client.ErreurConnexionException;
+import ui.client.CreationCompteAction;
 import ui.commun.ErreurPane;
 import ui.commun.TitrePane;
 
@@ -24,6 +29,37 @@ public class LoginPanel extends JPanel {
 	
 	private JTextField email;
 	private JPasswordField motDePasse;
+	private ErreurPane messageErreur;
+	
+	
+	public Client validateIdent() {
+		
+		Client test;
+		
+		String panelLogin;
+		String panelMdp;
+		
+		panelLogin=email.getText();
+		panelMdp=new String (motDePasse.getPassword());
+		
+		test= CarnetClientele.getInstance().TrouveParMail(panelLogin);
+		
+		if (test==null){
+			this.messageErreur.setText("Erreur de Mail");
+			this.messageErreur.repaint();
+			return null;
+		}
+		
+		try {
+				test.connexion(panelMdp);
+			} catch (ErreurConnexionException e) {
+				this.messageErreur.setText("Erreur de mot de passe");
+				this.messageErreur.repaint();
+				return null;
+			}
+				
+		return test;
+	}
 	
 	public LoginPanel() {
 	super();
@@ -34,19 +70,23 @@ public class LoginPanel extends JPanel {
 	 this.setLayout(new GridBagLayout());
 	 GridBagConstraints gbc = new GridBagConstraints();
 	 
+	 
 	 gbc.fill = GridBagConstraints.HORIZONTAL;
 	 gbc.gridwidth =2;
 	 gbc.insets = new Insets(5,5,5,5);
 	 gbc.gridy = 0;
 	 gbc.gridx = 0;
 	 add(new TitrePane("Identification"), gbc);
-	 
+	
+	
 	 gbc.fill = GridBagConstraints.HORIZONTAL;
 	 gbc.gridwidth =2;
 	 gbc.insets = new Insets(5,5,5,5);
 	 gbc.gridy = 1;
 	 gbc.gridx = 0;
-	 add(new ErreurPane("Email non reconnue ou mot de passe non valide"), gbc);
+	 messageErreur = new ErreurPane(" ");
+	 add(messageErreur, gbc);
+	
 	 
 	 gbc.gridwidth = 1;
 	 gbc.fill = GridBagConstraints.BOTH;
@@ -90,13 +130,23 @@ public class LoginPanel extends JPanel {
 	 
 	 public class LoginPanelBoutton extends JPanel {
 		 private static final long serialVersionUID = 1L;
+		 
+		 private AbstractAction loginAnnuler;
+		 private AbstractAction loginConnexion;
+		 private AbstractAction loginCreerCompte;
 		
 		 public LoginPanelBoutton() {
 		 super();
 		 setLayout(new GridLayout(0, 3));
-		 add(new JButton("Connexion"));
-		 add(new JButton("Créer un compte"));
-		 add(new JButton("Annuler"));
+		 
+		 loginConnexion=new LoginValidation();
+		 add(new JButton(loginConnexion));
+		 
+		 loginCreerCompte=new CreationCompteAction();
+		 add(new JButton(loginCreerCompte));
+		 
+		 loginAnnuler = new LoginAnnulerAction();
+		 add(new JButton(loginAnnuler));
 		 }
 	}
 	 

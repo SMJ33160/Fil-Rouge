@@ -13,8 +13,8 @@ public class StyloJP extends AbstractOptionJPane {
 	public StyloJP(ProduitCommunJPane communJP) {
 		super(communJP);
 		
-		this.AddLine("Type de Stylo", new JComboBox<Stylo.TypeStylo>(TypeStylo.values()));
-		this.AddLine("Couleur", new JTextField());
+		this.AddLine("Type de Stylo :", new JComboBox<Stylo.TypeStylo>(TypeStylo.values()));
+		this.AddLine("Couleur", new JTextField(25));
 		
 	}
 

@@ -10,3 +10,5 @@
 /LoginPanel$LoginPanelBoutton.class
 /LoginPanel$LoginPanelErreur.class
 /LoginPanel$LoginPanelSaisie.class
+/LoginAnnulerAction.class
+/LoginValidation.class

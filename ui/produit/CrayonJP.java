@@ -10,6 +10,8 @@ public class CrayonJP extends AbstractOptionJPane {
 
 	public CrayonJP(ProduitCommunJPane communJP) {
 		super(communJP);
+		
+	
 		this.AddLine("Dureté", new JComboBox<Crayon.DureteCrayon>(DureteCrayon.values()));
 		
 	}

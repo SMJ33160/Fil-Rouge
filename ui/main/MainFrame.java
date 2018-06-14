@@ -1,12 +1,10 @@
 package ui.main;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.HeadlessException;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JMenuBar;
+
+import ui.commun.EcouteurFermeture;
+import ui.produit.ProduitBodyJPane;
 
 public class MainFrame extends JFrame{
 
@@ -21,27 +19,18 @@ public class MainFrame extends JFrame{
 		 super("GESTION MAGASIN");
 
 		 // arrêter le programme si on ferme la fenêtre
-		 setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		 setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		 
-		// création d'une barre de menu
-		 JMenuBar mbVerte = new JMenuBar();
-		 mbVerte.setOpaque(true);
-		 mbVerte.setBackground(new Color(154, 255, 127));
-		 mbVerte.setPreferredSize(new Dimension(200, 200));
-		 // ajout de la barre de menu à la fenêtre
-		 setJMenuBar(mbVerte);
-
-		 // création d'une étiquette (texte affiché)
-		 JLabel etiquetteJaune = new JLabel("Un JLabel");
-		 etiquetteJaune.setOpaque(true);
-		 etiquetteJaune.setBackground(new Color(255, 255, 120));
-		 etiquetteJaune.setPreferredSize(new Dimension(300, 180));
-		 // on récupère le paneau de la fenêtre et on y ajoute l'étiquette
-		 getContentPane().add(etiquetteJaune, BorderLayout.CENTER);
-
-		 // on dimensionne la fenêtre au mieux
+		 // On ajoute un listener sur la fenêtre - ici on controlera la sortie
+		 this.addWindowListener(new EcouteurFermeture());	
+		 
+		 // on change le panneau contenu
+		 setContentPane((new ProduitBodyJPane()));
+		 //setContentPane(new LoginPanel());
+		 
 		 pack ();
+		 setLocationRelativeTo(null);
 		 }
 	
-	
+		
 }

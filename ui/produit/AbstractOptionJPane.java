@@ -32,11 +32,9 @@ public abstract class AbstractOptionJPane extends JPanel {
 		 
 		this.setLayout(new GridBagLayout());
 		gbc = new GridBagConstraints();
+		gbc.fill = GridBagConstraints.HORIZONTAL;
+		gbc.insets = new Insets(5,5,5,5);
 		
-		 gbc.gridy = 7;
-		 gbc.gridx = 0;
-		 gbc.fill = GridBagConstraints.BOTH;
-		 gbc.insets = new Insets(5,5,5,5);
 	}
 	
 	/**
@@ -54,11 +52,12 @@ public abstract class AbstractOptionJPane extends JPanel {
 		 gbc.gridy ++; // on décale de 1 en Y pour ajouter la ligne
 		 
 		 gbc.gridwidth = 1;
-		
+		 gbc.fill = GridBagConstraints.HORIZONTAL;
 		 gbc.gridx = 0;
 		 add(new JLabel(intitule,JLabel.LEFT), gbc);
 		
 		 gbc.gridwidth = 1;
+		 gbc.fill = GridBagConstraints.HORIZONTAL;
 		 gbc.gridx = 1;
 		 add(composant, gbc);
 		
